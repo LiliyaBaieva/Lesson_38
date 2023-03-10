@@ -29,9 +29,8 @@ public class Pawn {
   // "сеттер" для координат
   // public, потому что сеттер
   // не static, потому что для конкретной фигуры
-  public void setCoordinates(int row, int column) {
-    checkCoordinates(row, column);
-    // TODO проверка возможности хода
+
+  private void checkMove(int row, int column){
     int diffRow = row - this.row;
     int diffColumn = column - this.column;
     if(diffRow == 0 || diffColumn == 0){
@@ -57,7 +56,11 @@ public class Pawn {
     if(!firstStep && Math.abs(diffRow) > 1 ){
       throw new IllegalArgumentException("Пешка не может ходить так далеко");
     }
-
+  }
+  public void setCoordinates(int row, int column) {
+    checkMove(row, column);
+    this.column =  column;
+    this.row = row;
   }
 
   // проверка корректности координат
