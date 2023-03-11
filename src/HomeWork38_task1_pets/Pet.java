@@ -1,6 +1,7 @@
 package HomeWork38_task1_pets;
 
 public class Pet {
+  final private static char SEP = ',';
 //  Создать класс Pet (домашнее животное). В классе должны быть:
 //  enum Kind для вида животного (DOG, CAT, OTHER);
   private enum Kind{
@@ -20,25 +21,25 @@ public class Pet {
   private double weight;
 
 //  конструкторы
-  public Pet(Pet.Kind kindPet, String name){
+  public Pet(Kind kindPet, String name){  // "dog,кличка"
   this.kindPet = kindPet;
   this.name = name;
   this.dateOfBirth = null;
   this.weight = 0.00;
 }
 
-  public Pet(Pet.Kind kindPet, String name, String dateOfBirth){
+  public Pet(Kind kindPet, String name, double weight){ // "cat,кличка,вес"
     this.kindPet = kindPet;
     this.name = name;
-    this.dateOfBirth = dateOfBirth;
-    this.weight = 0.00;
+    this.dateOfBirth = null;
+    this.weight = weight;
   }
 
-  public Pet(Pet.Kind kindPet, String name, String dateOfBirth, double weight){
+  public Pet(Kind kindPet, String name, double weight, String dateOfBirth){ //"turtle,кличка,вес,дата рождения"
     this.kindPet = kindPet;
     this.name = name;
-    this.dateOfBirth = dateOfBirth;
     this.weight = weight;
+    this.dateOfBirth = dateOfBirth;
   }
 
   // сеттеры
@@ -76,7 +77,27 @@ public class Pet {
 
   //  статический метод для создания животного при прочтении данных из строки
 //  "dog,кличка", "cat,кличка,вес", "turtle,кличка,вес,дата рождения".
-
+  public static Pet parsePet(String line){  // "turtle,кличка,вес,дата рождения"
+    int sepIndex1 = line.indexOf(SEP);
+    int sepIndex2 = line.substring(sepIndex1 + 1).indexOf(SEP);
+    int sepIndex3 = line.substring(sepIndex2 + 1).indexOf(SEP);
+    if(sepIndex3 != -1){
+      Kind kindPet = Kind.valueOf(line.substring(0,sepIndex1));
+      String name = line.substring(sepIndex1 + 1, sepIndex2);
+      double weight = Double.parseDouble(line.substring(sepIndex2 + 1, sepIndex3));
+      String dateOfBirth = line.substring(sepIndex3 +1);
+      return new Pet(kindPet, name, weight, dateOfBirth);
+    } else if (sepIndex2 != -1) {   // "cat,кличка,вес"
+      Kind kindPet = Kind.valueOf(line.substring(0,sepIndex1));
+      String name = line.substring(sepIndex1 + 1, sepIndex2);
+      double weight = Double.parseDouble(line.substring(sepIndex2 + 1, sepIndex3));
+      return new Pet(kindPet, name, weight);
+    } else {   // "dog,кличка"
+      Kind kindPet = Kind.valueOf(line.substring(0,sepIndex1));
+      String name = line.substring(sepIndex1 + 1, sepIndex2);
+      return new Pet(kindPet, name);
+    }
+  }
 
 //  Создать класс Main, в котором данные будут считываться с консоли и красиво выводиться на экран.
 //  Формат входных данных: количество строк с записями о домашних животных, затем сами записи в описанном формате.
