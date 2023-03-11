@@ -34,6 +34,15 @@ public class Rook {
     int diffRow = row - this.row;
     int diffColumn = column - this.column;
 
+    if(diffRow == 0 || diffColumn == 0){
+      throw new IllegalArgumentException("Нельзя шагать на месте.");
+    }
+
+    // движенеи по одной линии, по горизонтали или по диагонали.
+    if(!(diffRow == 0 || diffColumn == 0)){
+      throw  new IllegalArgumentException("Ладья может ходить тольок по горизонтали или по вертикале.");
+    }
+
   }
   public void setCoordinates(int row, int column) {
     checkCoordinates(row, column);
