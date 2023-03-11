@@ -2,7 +2,9 @@ package Student;
 
 public class Student {
 
+  private static int counter = 0;
   final private static char SEP = ',';
+  final private int id; // индетефикатор студента, должен заполняться автоматически, автоматическич
   private String name;
   private String group;
   private String eMail;
@@ -10,15 +12,19 @@ public class Student {
 //  String eMail = null;
 
   public Student(String name, String group){
+    this.id = ++counter;  // сначала увеличи потом записали
     this.name = name;
     this.group = group;
     this.eMail = null;
+//    ++ counter;
   }
 
   public Student(String name, String group, String eMail){
+    this.id = ++counter;
     this.name = name;
     this.group = group;
     this.eMail = eMail;
+//    ++ counter;
   }
 
   public String getName() {
@@ -45,6 +51,7 @@ public class Student {
     this.eMail = eMail;
   }
 
+  // фабричный метод - производит объект из чего-то
   // - прочитать информацию о студентах - "имя" или "имя,e-mail" для каждого в отдельной строке
   // и вернуть получившегося студента
   // метод статический - вызывается сам по себе и возвращает нового прочитанного студента
@@ -60,6 +67,10 @@ public class Student {
     return new Student(/*name*/line, group);
 
   }
+
+//  public String printStudent(){
+//    return String.format(id + " " + name + ", " + group + ", " + eMail);
+//  }
 
 
 }
