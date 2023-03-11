@@ -3,6 +3,12 @@ package HomeWork38_task1_pets;
 public class Pet {
 //  Создать класс Pet (домашнее животное). В классе должны быть:
 //  enum Kind для вида животного (DOG, CAT, OTHER);
+  private enum Kind{
+  DOG,
+  CAT,
+  OTHER
+}
+
   //  поля:
 //      "вид животного" (тип Kind),
 //      "кличка" (тип String),
