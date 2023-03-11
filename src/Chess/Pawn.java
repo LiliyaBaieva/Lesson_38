@@ -38,7 +38,7 @@ public class Pawn {
     }
 
     if(diffColumn != 0){
-      throw new IllegalArgumentException("Пешка не может ходить по диагонали.");
+      throw new IllegalArgumentException("Пешка не может ходить по горизонтали.");
     }
 
     if(color == Color.WHITE && diffRow < 0 || color == Color.BLACK && diffRow >0){
