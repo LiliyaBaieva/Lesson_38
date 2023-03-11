@@ -19,7 +19,7 @@ public class Pet {
   private String dateOfBirth;
   private double weight;
 
-//  конструктор, сеттеры, геттеры;
+//  конструкторы
   public Pet(Pet.Kind kindPet, String name){
   this.kindPet = kindPet;
   this.name = name;
@@ -41,8 +41,43 @@ public class Pet {
     this.weight = weight;
   }
 
-//  статический метод для создания животного при прочтении данных из строки
+  // сеттеры
+  public void setKindPet(Kind kindPet) {
+    this.kindPet = kindPet;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setDateOfBirth(String dateOfBirth) {
+    this.dateOfBirth = dateOfBirth;
+  }
+
+  public void setWeight(double weight) {
+    this.weight = weight;
+  }
+
+//  геттеры
+  public Kind getKindPet() {
+    return kindPet;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getDateOfBirth() {
+    return dateOfBirth;
+  }
+
+  public double getWeight() {
+    return weight;
+  }
+
+  //  статический метод для создания животного при прочтении данных из строки
 //  "dog,кличка", "cat,кличка,вес", "turtle,кличка,вес,дата рождения".
+
+
 //  Создать класс Main, в котором данные будут считываться с консоли и красиво выводиться на экран.
 //  Формат входных данных: количество строк с записями о домашних животных, затем сами записи в описанном формате.
 }
