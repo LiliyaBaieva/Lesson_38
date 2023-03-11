@@ -2,6 +2,7 @@ package Student;
 
 public class Student {
 
+  final private static char SEP = ',';
   private String name;
   private String group;
   private String eMail;
@@ -48,7 +49,15 @@ public class Student {
   // и вернуть получившегося студента
   // метод статический - вызывается сам по себе и возвращает нового прочитанного студента
 
-  public static Student parseStudent(){
+  public static Student parseStudent(String group, String line){
+    int sepIndex = line.indexOf(SEP); // ищем запятую  в переданной строке
+    if(sepIndex != -1){
+      String name = line.substring(0, sepIndex);
+      String eMail = line.substring(sepIndex + 1);
+      return new Student(name, group, eMail);
+    }
+//    String name = line;
+    return new Student(/*name*/line, group);
 
   }
 
