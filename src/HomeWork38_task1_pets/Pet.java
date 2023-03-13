@@ -98,4 +98,14 @@ public class Pet {
       return new Pet(kindPet, name);
     }
   }
+
+//  public static Pet parsePet(String line){
+//    String[] parts = line.split(",");
+//    String kind = parts[0];
+//    String name = parts[1];
+//    Double weight = parts.length > 2 ? Double.parseDouble(parts[2]) : 0.00;
+//    String dateOfBirth = parts.length > 3 ? parts[3] : null;
+//    return new Pet(kindPet, name, weight, dateOfBirth);
+//  }
+
 }
