@@ -79,8 +79,8 @@ public class Pet {
 //  "dog,кличка", "cat,кличка,вес", "turtle,кличка,вес,дата рождения".
   public static Pet parsePet(String line){  // "turtle,кличка,вес,дата рождения"
     int sepIndex1 = line.indexOf(SEP);
-    int sepIndex2 = line.substring(sepIndex1 + 1).indexOf(SEP);
-    int sepIndex3 = line.substring(sepIndex2 + 1).indexOf(SEP);
+    int sepIndex2 = line.indexOf(SEP, sepIndex1 + 1);
+    int sepIndex3 = line.indexOf(SEP, sepIndex2 + 1);
     if(sepIndex3 != -1){
       Kind kindPet = Kind.valueOf(line.substring(0,sepIndex1).toUpperCase());
       String name = line.substring(sepIndex1 + 1, sepIndex2);
