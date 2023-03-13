@@ -82,23 +82,20 @@ public class Pet {
     int sepIndex2 = line.substring(sepIndex1 + 1).indexOf(SEP);
     int sepIndex3 = line.substring(sepIndex2 + 1).indexOf(SEP);
     if(sepIndex3 != -1){
-      Kind kindPet = Kind.valueOf(line.substring(0,sepIndex1));
+      Kind kindPet = Kind.valueOf(line.substring(0,sepIndex1).toUpperCase());
       String name = line.substring(sepIndex1 + 1, sepIndex2);
       double weight = Double.parseDouble(line.substring(sepIndex2 + 1, sepIndex3));
       String dateOfBirth = line.substring(sepIndex3 +1);
       return new Pet(kindPet, name, weight, dateOfBirth);
     } else if (sepIndex2 != -1) {   // "cat,кличка,вес"
-      Kind kindPet = Kind.valueOf(line.substring(0,sepIndex1));
+      Kind kindPet = Kind.valueOf(line.substring(0,sepIndex1).toUpperCase());
       String name = line.substring(sepIndex1 + 1, sepIndex2);
       double weight = Double.parseDouble(line.substring(sepIndex2 + 1, sepIndex3));
       return new Pet(kindPet, name, weight);
     } else {   // "dog,кличка"
-      Kind kindPet = Kind.valueOf(line.substring(0,sepIndex1));
+      Kind kindPet = Kind.valueOf(line.substring(0,sepIndex1).toUpperCase());
       String name = line.substring(sepIndex1 + 1, sepIndex2);
       return new Pet(kindPet, name);
     }
   }
-
-//  Создать класс Main, в котором данные будут считываться с консоли и красиво выводиться на экран.
-//  Формат входных данных: количество строк с записями о домашних животных, затем сами записи в описанном формате.
 }
