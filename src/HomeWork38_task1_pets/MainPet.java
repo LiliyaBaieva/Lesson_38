@@ -19,7 +19,11 @@ public class MainPet {
       line = br.readLine();
       Pet pet = Pet.parsePet(line);
       pets.add(pet);
-
+    }
+//    "turtle,кличка,вес,дата рождения"
+    for (Pet pet : pets){
+      System.out.printf("%s, %s, %d, %s%n", pet.getKindPet(), pet.getName(), pet.getWeight(), pet.getDateOfBirth());
+    }
 
   }
 
