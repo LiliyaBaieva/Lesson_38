@@ -22,7 +22,7 @@ public class MainPet {
     }
 //    "turtle,кличка,вес,дата рождения"
     for (Pet pet : pets){
-      System.out.printf("%s, %s, %d, %s%n", pet.getKindPet(), pet.getName(), pet.getWeight(), pet.getDateOfBirth());
+      System.out.printf("%s, %s, %d, %s%n", pet.getKind(), pet.getName(), pet.getWeight(), pet.getDateOfBirth());
     }
 
   }
